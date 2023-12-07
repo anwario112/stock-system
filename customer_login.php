@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>admin dashboard</title>
+    <?php  session_start();  ?>
+
+    <style>
+           #back{
+  position: relative;
+  bottom:30px;
+  background-color: #b5338A;
+  color:white;
+  border-radius: 4px;
+  padding: 15px;
+}
+    </style>
+  </head>
+  <body>
+  
+
+  <div class="half">
+    <div class="bg order-1 order-md-2" style="background-image: url('images/bg_1.jpg');"></div>
+    <div class="contents order-2 order-md-1">
+
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-6">
+            <div class="form-block">
+              <div class="text-center mb-5">
+              <h3>Login to <strong>Customer Dashboard</strong></h3>
+              <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
+              </div>
+              <form  method="POST" action="chk_customer_login.php">
+
+              <?php if(isset($_SESSION['msg'])){?>
+                           <div class="alert alert-secondary" id="back" role="alert">
+                                     <?php echo $_SESSION['msg'];?>
+                            </div>  
+                            <?php }?>    
+                <div class="form-group first">
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control" value="<?php if(isset($_SESSION['user']))
+                     echo $_SESSION['user']; ?>" aria-describedby="emailHelp" placeholder="Enter username" name="user">
+                </div>
+                <div class="form-group last mb-3">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" placeholder="Your Password" name="pass">
+                </div>
+                
+                <div class="d-sm-flex mb-5 align-items-center">
+                  <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">Remember me</span>
+                    <input type="checkbox" checked="checked"/>
+                    <div class="control__indicator"></div>
+                  </label>
+                  <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
+                </div>
+
+                <input type="submit" value="Log In" class="btn btn-block btn-primary">
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div>
+  <?php
+    if(isset($_SESSION['msg']))
+          unset($_SESSION['msg']);
+    
+
+    if(isset($_SESSION['user']))
+    unset($_SESSION['user']);
+    
+    ?>
+   
+</div>
+    
+    
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
